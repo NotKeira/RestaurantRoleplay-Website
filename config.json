@@ -1,6 +1,6 @@
 {
     "discord": {
-        "token": "OTQ0MTk5MTE4MDAyMjI1MTYy.GevWby.DHTH7tr9J_tq9Iryuj7KO5LNv9EOZZd1unxXZ8",
+        "token": "",
         "redirect": "http://localhost/callback",
         "client": {
             "id": "944199118002225162",
