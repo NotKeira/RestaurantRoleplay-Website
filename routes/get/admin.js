@@ -12,15 +12,7 @@ module.exports = {
                 )
             }
         }
-        /*let userList = []
 
-        const Users = require("../../schemas/users.js");
-        Users.find({})
-            .then((users) => {
-                userList = users
-            })
-            .catch((err) => console.error(err))*/
-
-        res.render("admin", { user: req.session.user || null, /* users: userList,*/ page: "Admin Portal", currentPage: "admin-portal", title: "Admin Portal - B33P0" })
+        res.render("admin", { user: req.session.user || null, page: "Admin Portal", currentPage: "admin-portal", title: "Admin Portal" })
     }
 }

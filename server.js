@@ -54,7 +54,14 @@ fastify
         store: new FileStore({ logFn: function () {} })
     })
     .register(require("@fastify/static"), {
-        root: join(__dirname, "static")
+        root: join(__dirname, "static"),
+        prefix: "/img/",
+        decorateReply: false,
+        wildcard: false,
+        schemaHide: true,
+        setHeaders: function (res, path, stat) {
+            res.setHeader("x-timestamp", Date.now())
+        },
     })
 
 fastify.setNotFoundHandler((request, reply) => {
@@ -77,7 +84,7 @@ for (const folder of eventFolders) {
 
 console.log(`Loaded ${pagesLoaded} pages.`)
 
-fastify.listen({ port: 1100, host: "0.0.0.0" }, function (err, address) {
+fastify.listen({ port: 80, host: "0.0.0.0" }, function (err, address) {
     if (err) {
         console.error(err)
         process.exit(1)

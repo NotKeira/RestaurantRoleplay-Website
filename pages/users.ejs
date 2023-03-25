@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include('partials/head') %>
+</head>
+
+<body class="g-sidenav-show">
+<%- include('partials/sidebar', { page:"guilds" }) %>
+<div class="main-content" id="panel">
+    <%- include('partials/navbar') %>
+    <div class="container-fluid py-4 mt-5">
+        <div class="row gap-4 mt-3" style="row-gap: 60px !important; justify-content: center;">
+            <div class="card-header pb-0">
+                <h6>Registered Users Dictionary</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Author
+                            </th>
+                            <th
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                Function
+                            </th>
+                            <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                CREATED
+                            </th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% guilds.forEach(guild=> {
+                            const guildObj = bot.guilds.cache.get(guild.id);
+                            let icon;
+
+                            if (!guildObj.iconURL()) icon = "/Discord2.webp" ||
+                                    "https://cdn.discordapp.com/embed/avatars/0.png";
+                            else icon = guildObj.iconURL() + "?size=256";
+                        %>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="https://cdn.discordapp.com/attachments/932222339985326138/1083070386809360394/IMG_0001.JPG"
+                                             class="avatar avatar-sm me-3"/>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm"><%= player.userName%></h6>
+                                        <p class="text-xs text-secondary mb-0">
+                                            <%= player.id %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0"><%=player.groupRank%></p>
+                                <p class="text-xs text-secondary mb-0"><%= player.staff%></p>
+                            </td>
+                            <td class="align-middle text-center">
+														<span
+                                                                class="text-secondary text-xs font-weight-bold"><%=user.joinDate%></span>
+                            </td>
+                            <td class="align-middle">
+                                <a href="/admin/manage/users/{player.id}"
+                                   class="text-secondary font-weight-bold text-xs"
+                                   data-toggle="tooltip" data-original-title="Edit user">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('partials/footer') %>
+</div>
+<!-- Footer -->
+</div>
+<%- include('partials/scripts') %>
+</body>
