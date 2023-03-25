@@ -1,0 +1,12 @@
+{
+    "discord": {
+        "token": "OTQ0MTk5MTE4MDAyMjI1MTYy.GevWby.DHTH7tr9J_tq9Iryuj7KO5LNv9EOZZd1unxXZ8",
+        "redirect": "http://localhost/callback",
+        "client": {
+            "id": "944199118002225162",
+            "secret": "s6z5nKVymbEbjM5Q6_A5i2exzrK_jEBe"
+        },
+        "admins": ["801384603704623115"]
+    },
+    "databaseSRV": "mongodb+srv://keiradatabases:QJVfBrKtzz6NKlzX@data.92igpc8.mongodb.net/"
+}

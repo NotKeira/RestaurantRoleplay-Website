@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+	<%- include('partials/head') %>
+</head>
+
+<body class="g-sidenav-show">
+	<%- include('partials/sidebar', { page:"guilds" }) %>
+		<div class="main-content" id="panel">
+			<%- include('partials/navbar') %>
+				<div class="container-fluid py-4 mt-5">
+					<div class="row gap-4 mt-3" style="row-gap: 60px !important; justify-content: center;">
+						<% guilds.forEach(guild=> {
+							const guildObj = bot.guilds.cache.get(guild.id);
+							let icon;
+
+							if (!guildObj.iconURL()) icon = "/Discord2.webp" ||
+							"https://cdn.discordapp.com/embed/avatars/0.png";
+							else icon = guildObj.iconURL() + "?size=256";
+							%>
+							<div class="card w-15" style="min-width: 200px;">
+								<div class="card-header mx-4 p-3 text-center">
+									<img style="margin-top: -100px; width: 100px; height: 100px; border-radius: 10px;"
+										src="<%= icon %>" alt="Logo">
+								</div>
+								<div class="card-body pt-0 p-3 text-center">
+									<h6 class="text-center mb-0">
+										<%= guild.name %>
+									</h6>
+									<span class="text-xs">
+										<%= guild.id %>
+									</span>
+									<hr class="horizontal dark my-3">
+									<script>
+										function kickFunction(id) {
+											console.log("Hi")
+											client.guilds.cache.get(id).leave();
+										};
+									</script>
+									<a class="btn bg-gradient-primary" onclick="kickFunction(guild.id)">
+										Manage
+									</a>
+								</div>
+							</div>
+							<% }) %>
+								<hr>
+								<% notInGuilds.forEach(guild=> {
+									let icon = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=256`
+									%>
+									<div class="card w-15" style="min-width: 200px;">
+										<div class="card-header mx-4 p-3 text-center">
+											<img style="margin-top: -3rem; width: 100px; height: 100px; border-radius: 10px;"
+												src="<%= icon %>" alt="Logo" onerror="this.src = '/Discord2.webp'">
+										</div>
+										<div class="card-body pt-0 p-3 text-center">
+											<h6 class="text-center mb-0">
+												<%= guild.name %>
+											</h6>
+											<span class="text-xs">
+												<%= guild.id %>
+											</span>
+											<hr class="horizontal dark my-3">
+											<a class="btn bg-gradient-dark" href="/invite?id=<%= guild.id %>">
+												Invite
+											</a>
+										</div>
+									</div>
+									<% }) %>
+
+					</div>
+				</div>
+
+
+				<%- include('partials/footer') %>
+		</div>
+		<!-- Footer -->
+		</div>
+		<%- include('partials/scripts') %>
+</body>

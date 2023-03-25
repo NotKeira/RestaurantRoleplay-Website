@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<head>
+	<%- include('partials/head') %>
+</head>
+
+<body class="g-sidenav-show">
+	<%- include('partials/sidebar', { page: "guilds" }) %>
+	<div class="main-content" id="panel">
+		<%- include('partials/navbar') %>
+		<div class="container-fluid pt-3">
+			<%- JSON.stringify(guild) %>
+		</div>
+		<%- include("partials/footer") %>
+	</div>
+	<%- include('partials/scripts') %>
+</body>
