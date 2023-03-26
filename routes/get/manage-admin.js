@@ -12,7 +12,7 @@ module.exports = {
         }
         let members = []
         const user = req.session.user
-        res.render("admin-guilds", {
+        res.render("manage-admin", {
             bot: client,
             user: req.session.user || null,
             list: members || [],
