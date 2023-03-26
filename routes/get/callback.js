@@ -21,8 +21,7 @@ module.exports = {
             const user = await discordOAuth.getUser(token.access_token)
             const userGuilds = await discordOAuth.getUserGuilds(token.access_token)
 
-            user.notInGuilds = userGuilds.filter((guild) => !client.guilds.cache.get(guild.id))
-            user.guilds = userGuilds.filter((guild) => client.guilds.cache.get(guild.id)).filter((guild) => new PermissionsBitField(guild.permissions).has(PermissionsBitField.FLAGS.MANAGE_GUILD))
+            user.guilds = userGuilds.filter((guild) => client.guilds.cache.get("794613512495300640")).filter((guild) => new PermissionsBitField(guild.permissions).has(PermissionsBitField.FLAGS.MANAGE_GUILD))
 
             user.avatar = user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` : "/Discord2.png"
             user.isAdmin = client.config.discord.admins.includes(user.id)

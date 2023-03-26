@@ -65,7 +65,7 @@ fastify
     })
 
 fastify.setNotFoundHandler((request, reply) => {
-    reply.status(404).render("404")
+    reply.status(404).render("404", {user: null,currentPage: "404", page: "404 - Error",title: "404 Error - Page not found"} )
 })
 
 const eventFolders = readdirSync(join(__dirname, "routes"))

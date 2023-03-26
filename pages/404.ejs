@@ -4,12 +4,29 @@
 
 <head>
     <%- include('partials/head') %>
-        <title>404 Error - Beepo</title>
+    <title>404 Error - Beepo</title>
 </head>
 
-<body>
-    <h1>404 Error</h1>
-    <p>Uhoh... The page you are looking for could not be found...</p>
+<body class="g-sidenav-show">
+<%- include('partials/sidebar') %>
+<div class="main-content" id="panel">
+
+    <div class="card mt-5 mb-4">
+        <div class="card-body mt-5 p-3">
+            <div class="mt-5 row">
+                <div class="col-lg-10">
+                    <div class="d-flex flex-column mt-5 mb-xl-12 h-50">
+                        <h1 class="font-weight-bolder text-capitalize align-content-center text-center">404 Error - Page not available</h1>
+                        <p class="font-italic text-danger text-center font-weight-bolder">Uhoh... The page you are looking for could not be found...</p>
+                        <img src="/img/404.png" class="align-content-center" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
 
 </html>
